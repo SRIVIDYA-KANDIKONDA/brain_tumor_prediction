@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Detection</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to an optional CSS file -->
+    <script>
+        function validateForm() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert("Please upload a brain CT scan image.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Stroke Detection from Brain CT Scan</h1>
+        <p>Please upload the brain CT scan image dataset to predict if the patient is experiencing a stroke.</p>
+        <form action="/predict" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <input type="file" id="fileInput" name="ct_scan_image" accept=".jpg, .jpeg, .png" required>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="result" style="margin-top: 20px;">
+            <!-- The result from the prediction will be displayed here -->
+        </div>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</body>
+</html>
